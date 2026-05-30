@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Jogo de Luta</title>
+</head>
+<body>
+    
+    <div class="game-container">
+        <div class="hud">
+            <div class="health-container">
+                <div id="vida-saci" class="health-bar"></div>
+            </div>
+            
+            <div class="timer">30</div>
+            
+            <div class="health-container">
+                <div id="vida-curupira" class="health-bar-enemy"></div>
+            </div>
+        </div>
+
+        <div id="saci" class="character">
+            <div class="gorro"></div>
+            <div class="bermuda"></div>
+        </div>
+
+        <div id="curupira" class="character">
+            <div class="cabelo-fogo"></div>
+            <div class="pes-invertidos"></div>
+        </div>
+
+        <canvas id="myCanvas" style="border: 4px #000000 solid;"></canvas>
+    </div> <div class="controls-container">
+        <div class="control-box saci-controls">
+            <h3>🔴 JOGADOR 1: SACI</h3>
+            <div class="control-row">
+                <span class="key">A</span> <span class="key">D</span> 
+                <p>Mover para Esquerda / Direita</p>
+            </div>
+            <div class="control-row">
+                <span class="key">W</span> 
+                <p>Pular</p>
+            </div>
+            <div class="control-row">
+                <span class="key long-key">Espaço</span> 
+                <p>Atacar (Redemoinho)</p>
+            </div>
+        </div>
+
+        <div class="control-box curupira-controls">
+            <h3>🟢 JOGADOR 2: CURUPIRA</h3>
+            <div class="control-row">
+                <span class="key">⬅</span> <span class="key">➡</span> 
+                <p>Mover para Esquerda / Direita</p>
+            </div>
+            <div class="control-row">
+                <span class="key">⬆</span> 
+                <p>Pular</p>
+            </div>
+            <div class="control-row">
+                <span class="key long-key">Enter</span> 
+                <p>Atacar (Força da Mata)</p>
+            </div>
+        </div>
+    </div> <script src="script.js"></script>
+</body>
+</html>

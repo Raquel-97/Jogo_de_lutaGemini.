@@ -1,0 +1,211 @@
+body {
+    background-color: darkslateblue;
+    display: flex;
+    flex-direction: column; /* Coloca as instruções embaixo do jogo */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    min-height: 100vh;/* Garante que o corpo ocupe toda a altura da tela */
+    margin: 0;
+    font-family: 'monospace', sans-serif;
+}
+.game-container {
+    position: relative; /* Prisao para que os personagens fiquem presos dentro do canvas */
+    width: 1024px;
+    height: 576px;
+    margin-bottom: 20px; /* Dá um espaço entre o jogo e o manual */
+
+  
+    background-image: url('https://img.freepik.com/vetores-gratis/sombra-de-silhueta-da-cena-da-floresta_1308-108696.jpg?semt=ais_hybrid&w=740&q=80'); /* Define o arquivo de imagem */
+    background-size: cover;       /* Garante que a imagem cubra todo o espaço sem distorcer */
+    background-position: center;  /* Centraliza o cenário na tela */
+    background-repeat: no-repeat; /* Impede que a imagem fique se repetindo em mosaico */
+}
+/* 🌟 ESTILIZAÇÃO COMPLETA DAS INSTRUÇÕES OUT-FRAME */
+.controls-container {
+    display: flex;
+    justify-content: space-between;
+    width: 1024px; /* Mesma largura do jogo para alinhar perfeitamente */
+    gap: 40px;
+}
+
+.control-box {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid white;
+    border-radius: 8px;
+    padding: 15px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.saci-controls h3 { color: #ff4d4d; margin-top: 0; font-size: 18px; }
+.curupira-controls h3 { color: #2ecc71; margin-top: 0; font-size: 18px; text-align: right; }
+.curupira-controls .control-row { flex-direction: row-reverse; } /* Inverte o lado para o player 2 */
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.control-row p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Estilo visual de "Tecla de Teclado" */
+.key {
+    background: #eee;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border-bottom: 3px solid #b5b5b5;
+    font-weight: bold;
+    font-size: 14px;
+    min-width: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.long-key {
+    min-width: 60px;
+}
+/* Estilo base para os dois personagens */
+.character {
+    position: absolute;
+    width: 50px;
+    height: 150px;
+    transition: transform 0.05s linear; /* Deixa o movimento suave */
+    z-index: 5; /* Força os personagens a ficarem na frente do fundo do canvas */
+    /* 🌟 ADICIONE ESTA LINHA ABAIXO: */
+    pointer-events: none;/* Permite que os cliques passem através dos personagens para o canvas */
+}
+
+/* ==========================================
+   🎭 VISUAL DO SACI
+   ========================================== */
+#saci {
+    background-color: #8B5A2B; /* Pele marrom */
+    border-radius: 5px;
+}
+
+#saci .gorro {
+    position: absolute;
+    top: -25px;
+    left: 5px;
+    width: 40px;
+    height: 25px;
+    background-color: red;
+    border-radius: 50% 50% 0 0; /* Curva o topo para parecer um capuz */
+}
+
+#saci .bermuda {
+    position: absolute;
+    bottom: 0;
+    width: 50px;
+    height: 40px;
+    background-color: crimson;
+    border-bottom: 5px solid black; /* Barra da bermuda */
+}
+
+/* ==========================================
+   🎭 VISUAL DO CURUPIRA
+   ========================================== */
+#curupira {
+    background-color: #DEB887; /* Pele clara/indígena */
+    border-radius: 5px;
+}
+
+#curupira .cabelo-fogo {
+    position: absolute;
+    top: -20px;
+    left: -5px;
+    width: 60px;
+    height: 30px;
+    /* Efeito de degradê para parecer fogo de verdade */
+    background: linear-gradient(to top, red, orange, yellow); 
+    border-radius: 10px 10px 0 0;
+}
+
+#curupira .pes-invertidos {
+    position: absolute;
+    bottom: -5px;
+    right: -15px; /* Projeta o pé para trás */
+    width: 25px;
+    height: 15px;
+    background-color: #DEB887;
+    border-radius: 0 5px 5px 0;
+}
+
+#myCanvas {
+    display: flex;
+    align-self: bottom;
+    justify-self: center;
+    
+    /* 🌟 ADICIONE ESTA LINHA: */
+    z-index: 1; /* Fica atrás da HUD e dos bonecos */
+}
+
+/* ==========================================
+   📊 ESTILIZAÇÃO DAS BARRAS DE VIDA (HUD)
+   ========================================== */
+.hud {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* 🌟 ADICIONE/CONFIRME ESTAS DUAS LINHAS: */
+    z-index: 20;            /* Força as barras a ficarem à frente do Canvas */
+    pointer-events: none;   /* Impede que as barras bloqueiem cliques no jogo */
+}
+
+/* Recipiente da barra (o fundo que armazena a vida) */
+.health-container {
+    position: relative;
+    width: 400px;
+    height: 30px;
+    background-color: crimson; /* Cor de fundo quando perde vida */
+    border: 3px solid white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* A vida em si (Verde) */
+.health-bar {
+    width: 100%; /* Começa cheia (100%) */
+    height: 100%;
+    background-color: #2ecc71;
+    transition: width 0.2s ease-out; /* Efeito suave ao diminuir */
+}
+
+/* Barra do inimigo diminui da direita para a esquerda */
+.health-bar-enemy {
+    width: 100%;
+    height: 100%;
+    background-color: #2ecc71;
+    float: right; /* Encolhe na direção certa */
+    transition: width 0.2s ease-out;
+}
+
+.timer {
+    width: 60px;
+    height: 60px;
+    background-color: #111;
+    border: 3px solid white;
+    color: yellow;
+    font-family: monospace;/* Fonte de máquina de escrever para um visual mais "game" */
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center; /* Centraliza o texto na horizontal */
+    align-items: center;     /* Centraliza o texto na vertical */
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
