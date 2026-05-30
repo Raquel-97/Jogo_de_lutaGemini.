@@ -1,17 +1,17 @@
 body {
-    background-color: darkslateblue;
-    display: flex;
+    background-color: darkslateblue;/* Cor de fundo do jogo */
+    display: flex;/* Usa Flexbox para organizar o layout */
     flex-direction: column; /* Coloca as instruções embaixo do jogo */
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center;     /* Centraliza verticalmente */
     min-height: 100vh;/* Garante que o corpo ocupe toda a altura da tela */
-    margin: 0;
-    font-family: 'monospace', sans-serif;
+    margin: 0;/* Remove margens padrão */
+    font-family: 'monospace', sans-serif;/* Fonte de máquina de escrever para um visual mais "game" */
 }
 .game-container {
     position: relative; /* Prisao para que os personagens fiquem presos dentro do canvas */
-    width: 1024px;
-    height: 576px;
+    width: 1024px;/* Largura do jogo */
+    height: 576px;/* Altura do jogo */
     margin-bottom: 20px; /* Dá um espaço entre o jogo e o manual */
 
   
@@ -22,61 +22,61 @@ body {
 }
 /* 🌟 ESTILIZAÇÃO COMPLETA DAS INSTRUÇÕES OUT-FRAME */
 .controls-container {
-    display: flex;
-    justify-content: space-between;
+    display: flex;/* Usa Flexbox para organizar o layout */
+    justify-content: space-between;/* Coloca as caixas de controle nos cantos opostos */
     width: 1024px; /* Mesma largura do jogo para alinhar perfeitamente */
-    gap: 40px;
+    gap: 40px;/* Dá um espaço entre as caixas de controle */
 }
 
 .control-box {
-    flex: 1;
-    background-color: rgba(0, 0, 0, 0.6);
-    border: 2px solid white;
-    border-radius: 8px;
-    padding: 15px;
-    color: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    flex: 1;/* Permite que as caixas cresçam igualmente para preencher o espaço */
+    background-color: rgba(0, 0, 0, 0.6);/* Fundo semi-transparente */
+    border: 2px solid white;/* Borda branca para destacar */
+    border-radius: 8px;/* Bordas arredondadas para um visual mais suave */
+    padding: 15px;/* Espaçamento interno para o conteúdo respirar */
+    color: white;/* Cor do texto */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);/* Sombra para dar profundidade */
 }
 
-.saci-controls h3 { color: #ff4d4d; margin-top: 0; font-size: 18px; }
-.curupira-controls h3 { color: #2ecc71; margin-top: 0; font-size: 18px; text-align: right; }
+.saci-controls h3 { color: #ff4d4d; margin-top: 0; font-size: 18px; }/* Estilo específico para o título do controle do Saci */
+.curupira-controls h3 { color: #2ecc71; margin-top: 0; font-size: 18px; text-align: right; }/* Estilo específico para o título do controle do Curupira, alinhado à direita */
 .curupira-controls .control-row { flex-direction: row-reverse; } /* Inverte o lado para o player 2 */
 
-.control-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
+.control-row {/* Estilo base para as linhas de controle */
+    display: flex;/* Usa Flexbox para organizar o layout dos controles */
+    align-items: center;/* Alinha os itens verticalmente */
+    gap: 10px;/* Dá um espaço entre a descrição e a tecla */
+    margin-bottom: 8px;/* Dá um espaço entre as linhas de controle */
 }
 
-.control-row p {
-    margin: 0;
-    font-size: 14px;
-    color: #ccc;
+.control-row p {/* Estilo para as descrições dos controles */
+    margin: 0;/* Remove margens padrão */
+    font-size: 14px;/* Tamanho da fonte para as descrições */
+    color: #ccc;/* Cor mais clara para as descrições, para criar hierarquia visual */
 }
 
 /* Estilo visual de "Tecla de Teclado" */
 .key {
-    background: #eee;
-    color: #333;
-    padding: 5px 10px;
-    border-radius: 4px;
-    border-bottom: 3px solid #b5b5b5;
-    font-weight: bold;
-    font-size: 14px;
-    min-width: 20px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    background: #eee;/* Cor de fundo clara para parecer uma tecla de teclado real */
+    color: #333;/* Cor do texto escura para contraste */
+    padding: 5px 10px;/* Espaçamento interno para dar a sensação de uma tecla real */
+    border-radius: 4px;/* Bordas arredondadas para um visual mais suave */
+    border-bottom: 3px solid #b5b5b5;/* Sombra inferior para dar a sensação de profundidade */
+    font-weight: bold;/* Deixa o texto em negrito para destacar as teclas */
+    font-size: 14px;/* Tamanho da fonte para as teclas */
+    min-width: 20px;/* Largura mínima para teclas como "Space" ou "Enter" */
+    text-align: center;/* Centraliza o texto dentro da tecla */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);/* Sombra para dar profundidade e realismo às teclas */
 }
 
-.long-key {
-    min-width: 60px;
+.long-key {/* Classe adicional para teclas mais longas como "Space" ou "Enter" */
+    min-width: 60px;/* Aumenta a largura mínima para acomodar o texto mais longo */
 }
 /* Estilo base para os dois personagens */
-.character {
-    position: absolute;
-    width: 50px;
-    height: 150px;
+.character {/* Estilo base para os personagens */
+    position: absolute;/* Permite posicionar os personagens dentro do container do jogo */
+    width: 50px;/* Largura do personagem */
+    height: 150px;/* Altura do personagem */
     transition: transform 0.05s linear; /* Deixa o movimento suave */
     z-index: 5; /* Força os personagens a ficarem na frente do fundo do canvas */
     /* 🌟 ADICIONE ESTA LINHA ABAIXO: */
@@ -87,26 +87,26 @@ body {
    🎭 VISUAL DO SACI
    ========================================== */
 #saci {
-    background-color: #8B5A2B; /* Pele marrom */
-    border-radius: 5px;
+    background-color: #8B5A2B; /* Cor de pele mais escura para o Saci */
+    border-radius: 5px;/* Bordas arredondadas para um visual mais suave */
 }
 
-#saci .gorro {
-    position: absolute;
-    top: -25px;
-    left: 5px;
-    width: 40px;
-    height: 25px;
-    background-color: red;
+#saci .gorro {/* O gorro do Saci */
+    position: absolute;/* Permite posicionar o gorro em relação ao corpo do Saci */
+    top: -25px;/* Posiciona o gorro acima da cabeça do Saci */
+    left: 5px;/* Centraliza o gorro em relação ao corpo do Saci */
+    width: 40px;/* Largura do gorro */
+    height: 25px;/* Altura do gorro */
+    background-color: red;/* Cor vermelha para o gorro do Saci */
     border-radius: 50% 50% 0 0; /* Curva o topo para parecer um capuz */
 }
 
-#saci .bermuda {
-    position: absolute;
-    bottom: 0;
-    width: 50px;
-    height: 40px;
-    background-color: crimson;
+#saci .bermuda {/* A bermuda do Saci */
+    position: absolute;/* Permite posicionar a bermuda em relação ao corpo do Saci */
+    bottom: 0;/* Posiciona a bermuda na parte inferior do corpo do Saci */
+    width: 50px;/* Largura da bermuda para cobrir toda a parte inferior do Saci */
+    height: 40px;/* Altura da bermuda para dar a impressão de que o Saci está usando uma roupa */
+    background-color: crimson;/* Cor vermelha para a bermuda do Saci */
     border-bottom: 5px solid black; /* Barra da bermuda */
 }
 
@@ -115,34 +115,34 @@ body {
    ========================================== */
 #curupira {
     background-color: #DEB887; /* Pele clara/indígena */
-    border-radius: 5px;
+    border-radius: 5px;/* Bordas arredondadas para um visual mais suave */
 }
 
-#curupira .cabelo-fogo {
-    position: absolute;
-    top: -20px;
-    left: -5px;
-    width: 60px;
-    height: 30px;
+#curupira .cabelo-fogo {/* O cabelo de fogo do Curupira */
+    position: absolute;/* Permite posicionar o cabelo em relação ao corpo do Curupira */
+    top: -20px;/* Posiciona o cabelo acima da cabeça do Curupira */
+    left: -5px;/* Centraliza o cabelo em relação ao corpo do Curupira */
+    width: 60px;/* Largura do cabelo para cobrir toda a parte superior do Curupira */
+    height: 30px;/* Altura do cabelo para dar a impressão de que o Curupira tem um cabelo de fogo grande e chamativo */
     /* Efeito de degradê para parecer fogo de verdade */
-    background: linear-gradient(to top, red, orange, yellow); 
-    border-radius: 10px 10px 0 0;
+    background: linear-gradient(to top, red, orange, yellow); /* Cores do fogo */
+    border-radius: 10px 10px 0 0;/* Curva o topo para parecer um cabelo de fogo */
 }
 
-#curupira .pes-invertidos {
-    position: absolute;
-    bottom: -5px;
+#curupira .pes-invertidos {/* Os pés invertidos do Curupira */
+    position: absolute;/* Permite posicionar os pés em relação ao corpo do Curupira */
+    bottom: -5px;/* Posiciona os pés um pouco abaixo da parte inferior do corpo do Curupira para dar a impressão de que ele está usando seus pés invertidos como sapatos */
     right: -15px; /* Projeta o pé para trás */
-    width: 25px;
-    height: 15px;
-    background-color: #DEB887;
-    border-radius: 0 5px 5px 0;
+    width: 25px;/* Largura dos pés para dar a impressão de que o Curupira tem pés grandes e chamativos */
+    height: 15px;/* Altura dos pés para dar a impressão de que o Curupira tem pés grandes e chamativos */
+    background-color: #DEB887;/* Cor da pele do Curupira */
+    border-radius: 0 5px 5px 0;/* Curva o lado direito para parecer um pé invertido */
 }
 
-#myCanvas {
-    display: flex;
-    align-self: bottom;
-    justify-self: center;
+#myCanvas {/* Estilo para o canvas do jogo */
+    display: flex;/* Usa Flexbox para organizar o layout */
+    align-self: bottom;/* Alinha o canvas na parte inferior do container do jogo */
+    justify-self: center;/* Centraliza o canvas horizontalmente */
     
     /* 🌟 ADICIONE ESTA LINHA: */
     z-index: 1; /* Fica atrás da HUD e dos bonecos */
@@ -151,15 +151,15 @@ body {
 /* ==========================================
    📊 ESTILIZAÇÃO DAS BARRAS DE VIDA (HUD)
    ========================================== */
-.hud {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 900px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.hud {/* Container da HUD (barras de vida e timer) */
+    position: absolute;/* Permite posicionar a HUD sobre o canvas */
+    top: 20px;/* Dá um espaço do topo para não ficar colada na borda */
+    left: 50%;/* Posiciona a HUD no centro horizontal do container do jogo */
+    transform: translateX(-50%);/* Centraliza a HUD usando transformações */
+    width: 900px;/* Largura total da HUD para acomodar as barras de vida e o timer */
+    display: flex;/* Usa Flexbox para organizar o layout da HUD */
+    align-items: center;/* Alinha os itens verticalmente */
+    justify-content: space-between;/* Coloca as barras de vida nos cantos e o timer no centro */
     
     /* 🌟 ADICIONE/CONFIRME ESTAS DUAS LINHAS: */
     z-index: 20;            /* Força as barras a ficarem à frente do Canvas */
@@ -167,45 +167,45 @@ body {
 }
 
 /* Recipiente da barra (o fundo que armazena a vida) */
-.health-container {
-    position: relative;
-    width: 400px;
-    height: 30px;
+.health-container {/* Estilo para o recipiente da barra de vida */
+    position: relative;/* Permite posicionar a barra de vida dentro do recipiente */
+    width: 400px;/* Largura do recipiente da barra de vida */
+    height: 30px;/* Altura do recipiente da barra de vida */
     background-color: crimson; /* Cor de fundo quando perde vida */
-    border: 3px solid white;
-    border-radius: 5px;
-    overflow: hidden;
+    border: 3px solid white;/* Borda branca para destacar a barra de vida */
+    border-radius: 5px;/* Bordas arredondadas para um visual mais suave */
+    overflow: hidden;/* Esconde a parte da barra de vida que ultrapassa o recipiente */
 }
 
 /* A vida em si (Verde) */
 .health-bar {
     width: 100%; /* Começa cheia (100%) */
-    height: 100%;
-    background-color: #2ecc71;
+    height: 100%;/* A barra de vida ocupa toda a altura do recipiente */
+    background-color: #2ecc71;/* Cor verde para a barra de vida */
     transition: width 0.2s ease-out; /* Efeito suave ao diminuir */
 }
 
 /* Barra do inimigo diminui da direita para a esquerda */
 .health-bar-enemy {
-    width: 100%;
-    height: 100%;
-    background-color: #2ecc71;
+    width: 100%;  /* Começa cheia (100%) */
+    height: 100%;/* A barra de vida ocupa toda a altura do recipiente */
+    background-color: #2ecc71;/* Cor verde para a barra de vida */
     float: right; /* Encolhe na direção certa */
-    transition: width 0.2s ease-out;
+    transition: width 0.2s ease-out;/* Efeito suave ao diminuir */
 }
 
-.timer {
-    width: 60px;
-    height: 60px;
-    background-color: #111;
-    border: 3px solid white;
-    color: yellow;
+.timer {/* Estilo para o timer no centro da HUD */
+    width: 60px;/* Largura do timer */
+    height: 60px;/* Altura do timer */
+    background-color: #111;/* Fundo escuro para destacar o timer */
+    border: 3px solid white;/* Borda branca para destacar o timer */
+    color: yellow;/* Cor amarela para o texto do timer */
     font-family: monospace;/* Fonte de máquina de escrever para um visual mais "game" */
-    font-size: 26px;
-    font-weight: bold;
-    display: flex;
+    font-size: 26px;/* Tamanho da fonte para o timer */
+    font-weight: bold;/* Deixa o texto em negrito para destacar o timer */
+    display: flex;/* Usa Flexbox para organizar o layout do timer */
     justify-content: center; /* Centraliza o texto na horizontal */
     align-items: center;     /* Centraliza o texto na vertical */
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    border-radius: 50%;/* Deixa o timer redondo */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);/* Sombra para dar profundidade ao timer */
 }
